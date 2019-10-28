@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="CreateProductViewModel"
+             x:Class="AppListShopping.Views.CreateProductPage">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label Text="Adicionar produto" HorizontalOptions="Center" FontSize="Medium"></Label>
+            <StackLayout>
+                <Entry Text="{Binding ProductCurrent.Name}" Placeholder="Nome do produto" TextColor="Black" Opacity=".5"></Entry>
+                <Entry Text="{Binding ProductCurrent.Count}" Keyboard="Numeric" Placeholder="Quantidade do produto" TextColor="Black" Opacity=".5"></Entry>
+                <Button x:Name="buttonSaveOrSaveEdition"  Command="{Binding ButtonSaveOrSaveEditionProduct}" Text="Salvar" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+            <Label Text="Lista de produtos para comprar" HorizontalOptions="Center" FontSize="Medium"></Label>
+            <ListView ItemsSource="{Binding Products}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Excluir" Command="{Binding Source={x:Reference CreateProductViewModel}, Path=BindingContext.ButtonDeleteProduct}" CommandParameter="{Binding .}"></MenuItem>
+                                <MenuItem Text="Editar" Command="{Binding Source={x:Reference CreateProductViewModel}, Path=BindingContext.ButtonEditProduct}" CommandParameter="{Binding .}" ></MenuItem>
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}" TextColor="Black" VerticalOptions="Center"></Label>
+                                    <Label Text="{Binding Count, StringFormat='Quantidade: {0}'}" VerticalOptions="Center"></Label>
+                                </StackLayout>
+                                <Button Text="Comprei" Command="{Binding Source={x:Reference CreateProductViewModel}, Path=BindingContext.ButtonBuyProduct}" CommandParameter="{Binding .}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Button>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

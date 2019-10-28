@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppListShopping.Views.SettingsPage">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Button Text="Deletar todos os produtos na lista de compras ?" Command="{Binding ButtonDeleteAllProductsBuyNo}" HorizontalOptions="FillAndExpand"></Button>
+            <Button Text="Deletar todos os produtos já comprados ?" Command="{Binding ButtonDeleteAllProductsBuyYes}" HorizontalOptions="FillAndExpand"></Button>
+            <Button Text="Deletar todos os produtos ?" Command="{Binding ButtonDeleteAllProductsBuy}" HorizontalOptions="FillAndExpand"></Button>
+            <StackLayout>
+                <Label Margin="10" Text="Mais opções" FontSize="Medium" HorizontalTextAlignment="Center"></Label>
+                <StackLayout Margin="10">
+                    <Label Text="Receber informações pelo email:"></Label>
+                    <Entry x:Name="entryEmail" Placeholder="Digite seu email" Opacity=".5"></Entry>
+                    <Button Text="Salvar" Command="{Binding ButtonSaveEmail}" CommandParameter="{Binding Source={x:Reference entryEmail}, Path=Text}" HorizontalOptions="FillAndExpand"></Button>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Margin="10" Text="Sobre" FontSize="Medium" HorizontalTextAlignment="Center"></Label>
+                <StackLayout Margin="10" HorizontalOptions="Center">
+                    <Label Text="Desenvolvido por Ismael Nascimento"></Label>
+                    <Label Text="Todos os direitos reservados. 2018"></Label>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
